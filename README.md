@@ -2,12 +2,12 @@
 
 [Origins Game Fair](http://originsgamefair.com) is running a three day online table-top gaming expo, but retrieving event dates & times requires clicking on individual event titles across multiple pages of events. Best I could manage to view was the titles & descriptions split into 11 separate pages, ordered by date (additional individual clicks required to view *which* date an event is on).
 
-Extract-origins-online-events provides a simple Python module (`extract.py`) to consolidate all event data into a single, browseable .CSV spreadsheet using `python3`, `wget`, & `bash`.
+Extract-origins-online-events provides a simple Python module (`extract.py`) to consolidate all event data into a single, browseable spreadsheet file (`events.csv`) using `python3`, `wget`, `seq` & `bash`.
 
 ## Usage
 ```
-# 1) Retrieve all event pages [takes about 2 minutes to run]
-wget --recursive --level=3 'https://gama.configio.com/ShoppingCart.aspx?srt=startdate'
+# 1) Retrieve events on all pages [170MB; takes about 7 minutes to run]
+for PAGE in `seq 1 10`; do wget --recursive --level=1 'https://gama.configio.com/ShoppingCart.aspx?srt=startdate&pg='$PAGE; done
 
 # 2) Prepare an empty CSV file
 echo '"Event File", "Title", "Date", "Start Time", "End Time", "Description"' > events.csv
