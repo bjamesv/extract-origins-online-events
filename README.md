@@ -2,7 +2,7 @@
 
 # Usage
 ```
-# Retrive all event pages (takes a minute or two)
+# Retrive all event pages (takes about 2 minutes to run)
 wget --recursive --level=2 'https://gama.configio.com/ShoppingCart.aspx?srt=startdate'
 # Prepare an empty CSV file
 echo '"Event File", "Title", "Date", "Start Time", "End Time", "Description"' > events.csv
