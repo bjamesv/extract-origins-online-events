@@ -31,7 +31,7 @@ def print_csv_line(event_html):
         raw_extract, matched, remainder = remainder.partition(after_string)
         if matched != after_string:
             raise ValueError('after_string "{}" not found in event'.format(after_string))
-        return raw_extract.strip()
+        return raw_extract.strip().replace('\n','').replace('\r','')
     # extract
     title = extract(event_html, '<title>', '</title>')
     date = extract(event_html, 'Start Date: ', '">')
